@@ -1,7 +1,29 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-class Splash_Screen extends StatelessWidget {
+import '../../utils/MyRoutes.dart';
+
+class Splash_Screen extends StatefulWidget {
   const Splash_Screen({super.key});
+
+  @override
+  State<Splash_Screen> createState() => _Splash_ScreenState();
+}
+
+class _Splash_ScreenState extends State<Splash_Screen> {
+  changepage() {
+    Timer.periodic(Duration(seconds: 4), (timer) {
+      Navigator.of(context).pushReplacementNamed(MyRoutes.Home);
+      timer.cancel();
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    changepage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +35,11 @@ class Splash_Screen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/Mention.gif'),
+              Image.asset('assets/images/Vasant Panchami Festival.gif'),
             ],
           ),
         ),
       ),
-      // backgroundColor: theme_4,
     );
   }
 }
